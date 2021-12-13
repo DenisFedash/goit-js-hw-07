@@ -32,5 +32,11 @@ let gallery = new SimpleLightbox('.gallery__link', {
   captionsData: 'alt',
   captionDelay: '250',
 });
-console.log(gallery);
+gallery.on('show.simplelightbox', function (e) {	
+  console.log(e);
+});
+gallery.on('close.simplelightbox', function (e) {	
+  console.log(e);
+});
+
 
