@@ -35,7 +35,7 @@ function onPaletteContainer(evt) {
         document.addEventListener('keydown', onEscKeyPress)
       },
       onClose: (modal) => {
-        document.addEventListener('keydown', onEscKeyPress)
+        document.removeEventListener('keydown', onEscKeyPress)
       }  
     })
   modal.show();  
