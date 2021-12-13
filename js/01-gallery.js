@@ -24,18 +24,31 @@ function createImageCards(galleryItems) {
   }).join(' ');
 };
 function onPaletteContainer(evt) {
-  evt.preventDefault();
-  
+  evt.preventDefault();  
   if (!evt.target.classList.contains('gallery__image') ) {
     return;
-  }
-  console.log(evt.target);
-  const instance = basicLightbox.create(`  	
+  };
+  const modal = basicLightbox.create(`  	
     <img src= "${evt.target.dataset.source}" /> 
-`);
-  instance.show();
-  
+`, {
+      onShow: (modal) => {
+        document.addEventListener('keydown', onEscKeyPress)
+      },
+      onClose: (modal) => {
+        document.addEventListener('keydown', onEscKeyPress)
+      }  
+    })
+  modal.show();  
+  function onEscKeyPress(evt) {
+    const ESC_KEY_CODE = 'Escape';
+    const isEscActive = evt.code === ESC_KEY_CODE;
+    if (isEscActive) {
+      modal.close();
+    }
+}
 };
+
+
 
 
 
